@@ -34,5 +34,24 @@ const kittenThree = `<li class="card">
                         Sus ojos son grandes y las orejas resultan largas y en punta.
                     </p>
                 </li>`;
-const section = document.querySelector(".js-list");
+const catList = document.querySelector(".js-list");
+const btnCancel = document.querySelector(".js-btn-cancel");
+
+catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+
+
+const btn = document.querySelector(".js-btn-add");
+const newForm = document.querySelector(".js-newForm")
+
+btn.addEventListener ("click", () => {
+    // console.log("click hecho");
+    newForm.classList.remove("collapsed");
+})
+
+btnCancel.addEventListener ("click", () => {
+    // console.log("click cancelled");
+    newForm.classList.add("collapsed");
+})
+
+
 
