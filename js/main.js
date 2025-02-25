@@ -14,16 +14,17 @@ const kittenDesc3 = "Tienen la cabeza cuadrada y los ojos simétricos, por lo qu
 const kittenRace1 = "Siamés";
 const kittenRace2 = "Sphynx";
 const kittenRace3 = "Maine Coon";
-const kittenOne = `<li class="card">
-    <article>
-        <img class="card_img" src=${kittenImg1} alt="siames-cat" />
-        <h3 class="card_title">${kittenName1.toUpperCase()}</h3>
-        <h4 class="card_race">${kittenRace1}</h4>
-        <p class="card_description">
-        ${kittenDesc1}
-        </p>
-    </article>
-</li>`;
+
+// const kittenOne = `<li class="card">
+//     <article>
+//         <img class="card_img" src=${kittenImg1} alt="siames-cat" />
+//         <h3 class="card_title">${kittenName1.toUpperCase()}</h3>
+//         <h4 class="card_race">${kittenRace1}</h4>
+//         <p class="card_description">
+//         ${kittenDesc1}
+//         </p>
+//     </article>
+// </li>`;
 const kittenTwo = `<li class="card">
                     <img class="card_img" src=${kittenImg2} alt="sphynx-cat" />
                     <h3 class="card_title">${kittenName2.toUpperCase()}</h3>
@@ -41,7 +42,22 @@ const kittenThree = `<li class="card">
                     </p>
                 </li>`;
 
+function renderKitten (url, name, race, desc) {
+    const kittenCard = `<li class="card">
+    <article>
+        <img class="card_img" src=${url} alt="siames-cat" />
+        <h3 class="card_title">${name.toUpperCase()}</h3>
+        <h4 class="card_race">${race}</h4>
+        <p class="card_description">
+        ${desc}
+        </p>
+    </article>
+</li>`;
+    return kittenCard;
+}
 
+renderKitten (kittenImg1, kittenName1, kittenRace1, kittenDesc1);
+const kittenOne = renderKitten (kittenImg1, kittenName1, kittenRace1, kittenDesc1);
 
 /*const kittenOne =  kittenImg1 + kittenName1 + kittenRace1 + kittenDesc1;
 console.log(kittenOne)
@@ -58,17 +74,27 @@ catList.innerHTML = kittenOne + kittenTwo + kittenThree;
 
 
 const btn = document.querySelector(".js-btn-add");
-const newForm = document.querySelector(".js-newForm")
+const newForm = document.querySelector(".js-newForm");
 
-btn.addEventListener("click", () => {
-    // console.log("click hecho");
-    newForm.classList.remove("collapsed");
-})
+// function showNewCatForm() {
+//     newForm.classList.remove("collapsed");
+// }
 
-btnCancel.addEventListener("click", () => {
-    // console.log("click cancelled");
-    newForm.classList.add("collapsed");
-})
+// function hideNewCatFrom() {
+//     newForm.classList.add("collapsed");
+// }
+
+function handleClickNewCatForm(event) {
+    if (newForm.classList.contains("collapsed")) {
+        newForm.classList.remove("collapsed");
+    } else {
+        newForm.classList.add("collapsed")
+    }
+}
+
+btn.addEventListener("click", handleClickNewCatForm);
+
+btnCancel.addEventListener("click", handleClickNewCatForm);
 
 // 1- Definir lo que vamos a usar 
 // 2- Escuchar la acción click del botón
@@ -86,12 +112,7 @@ btnSearch.addEventListener("click", (event) => {
     const inputDescription = description.value;;
     if (KittenDesc1.includes(inputDescription)) {
         catSection.innerHTML = kittenOne;
-
-
-
-
     }
-
 });
 
 
