@@ -42,7 +42,7 @@ const kittenThree = `<li class="card">
                     </p>
                 </li>`;
 
-function renderKitten (url, name, race, desc) {
+function renderKitten(url, name, race, desc) {
     const kittenCard = `<li class="card">
     <article>
         <img class="card_img" src=${url} alt="siames-cat" />
@@ -56,8 +56,8 @@ function renderKitten (url, name, race, desc) {
     return kittenCard;
 }
 
-renderKitten (kittenImg1, kittenName1, kittenRace1, kittenDesc1);
-const kittenOne = renderKitten (kittenImg1, kittenName1, kittenRace1, kittenDesc1);
+renderKitten(kittenImg1, kittenName1, kittenRace1, kittenDesc1);
+const kittenOne = renderKitten(kittenImg1, kittenName1, kittenRace1, kittenDesc1);
 
 /*const kittenOne =  kittenImg1 + kittenName1 + kittenRace1 + kittenDesc1;
 console.log(kittenOne)
@@ -107,12 +107,29 @@ const btnSearch = document.querySelector(".js_button-search");
 const description = document.querySelector(".js_in_search_desc");
 const catSection = document.querySelector(".js-list");
 
-btnSearch.addEventListener("click", (event) => {
+/*btnSearch.addEventListener("click", (event) => {
     event.preventDefault(btnSearch);
     const inputDescription = description.value;;
-    if (KittenDesc1.includes(inputDescription)) {
+    if (kittenDesc1.includes(inputDescription)) {
         catSection.innerHTML = kittenOne;
     }
-});
+});*/
 
 
+
+const filterKitten = (event) => {
+    const inputDescription = description.value;
+    event.preventDefault();
+    catSection.innerHTML = "";
+    if (kittenDesc1.includes(inputDescription)) {
+        catSection.innerHTML += kittenOne;
+    }
+    if (kittenDesc2.includes(inputDescription)) {
+        catSection.innerHTML += kittenTwo;
+    }
+    if (kittenDesc3.includes(inputDescription)) {
+        catSection.innerHTML += kittenThree;
+    }
+};
+
+btnSearch.addEventListener('click', filterKitten);
