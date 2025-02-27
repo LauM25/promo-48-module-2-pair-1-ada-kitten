@@ -15,32 +15,31 @@ const kittenRace1 = "Siamés";
 const kittenRace2 = "Sphynx";
 const kittenRace3 = "Maine Coon";
 
-// const kittenOne = `<li class="card">
-//     <article>
-//         <img class="card_img" src=${kittenImg1} alt="siames-cat" />
-//         <h3 class="card_title">${kittenName1.toUpperCase()}</h3>
-//         <h4 class="card_race">${kittenRace1}</h4>
-//         <p class="card_description">
-//         ${kittenDesc1}
-//         </p>
-//     </article>
-// </li>`;
-const kittenTwo = `<li class="card">
-                    <img class="card_img" src=${kittenImg2} alt="sphynx-cat" />
-                    <h3 class="card_title">${kittenName2.toUpperCase()}</h3>
-                    <h4 class="card_race">${kittenRace2}</h4>
-                    <p class="card_description">
-                    ${kittenDesc2}
-                    </p>
-                </li>`;
-const kittenThree = `<li class="card">
-                    <img class="card_img" src=${kittenImg3} alt="maine-coon-cat" />
-                    <h3 class="card_title">${kittenName3.toUpperCase()}</h3>
-                    <h4 class="card_race">${kittenRace3}</h4>
-                    <p class="card_description">
-                    ${kittenDesc3}
-                    </p>
-                </li>`;
+const kittenData_1 = {
+    image: 'https://dev.adalab.es/gato-siames.webp', 
+    name: 'Anastacio',
+    desc: 'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.',
+    race: 'Siamés',
+};
+
+const kittenData_2 = {
+    image: 'https://dev.adalab.es/sphynx-gato.webp', 
+    name: 'Fiona',
+    desc: 'Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo',
+    race: 'Sphynx',
+};
+
+const kittenData_3 = {
+    image: 'https://dev.adalab.es/maine-coon-cat.webp', 
+    name: 'Cielo',
+    desc: 'Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.',
+    race: 'Maine Coon',
+};
+
+
+
+const catList = document.querySelector(".js-list");
+
 
 function renderKitten(url, name, race, desc) {
     const kittenCard = `<li class="card">
@@ -55,9 +54,15 @@ function renderKitten(url, name, race, desc) {
 </li>`;
     return kittenCard;
 }
+// Esto sería otra manera de poner la card de los gatitos
+// renderKitten(kittenImg1, kittenName1, kittenRace1, kittenDesc1);
+// const kittenOne = renderKitten(kittenImg1, kittenName1, kittenRace1, kittenDesc1);
+catList.innerHTML = renderKitten(kittenData_1.image, kittenData_1.name, kittenData_1.race, kittenData_1.desc);
 
-renderKitten(kittenImg1, kittenName1, kittenRace1, kittenDesc1);
-const kittenOne = renderKitten(kittenImg1, kittenName1, kittenRace1, kittenDesc1);
+
+
+
+
 
 /*const kittenOne =  kittenImg1 + kittenName1 + kittenRace1 + kittenDesc1;
 console.log(kittenOne)
@@ -67,10 +72,10 @@ kittenOne.classList.add("card");*/
 
 
 
-const catList = document.querySelector(".js-list");
+
 const btnCancel = document.querySelector(".js-btn-cancel");
 
-catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+
 
 
 const btn = document.querySelector(".js-btn-add");
