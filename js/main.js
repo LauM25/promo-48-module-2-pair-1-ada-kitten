@@ -15,6 +15,8 @@ const kittenRace1 = "Siamés";
 const kittenRace2 = "Sphynx";
 const kittenRace3 = "Maine Coon";
 
+const catList = document.querySelector(".js-list");
+
 const kittenData_1 = {
     image: 'https://dev.adalab.es/gato-siames.webp', 
     name: 'Anastacio',
@@ -36,28 +38,27 @@ const kittenData_3 = {
     race: 'Maine Coon',
 };
 
+const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 
-
-const catList = document.querySelector(".js-list");
-
-
-function renderKitten(url, name, race, desc) {
-    const kittenCard = `<li class="card">
+function renderKitten(patata) {
+    return `<li class="card">
     <article>
-        <img class="card_img" src=${url} alt="siames-cat" />
-        <h3 class="card_title">${name.toUpperCase()}</h3>
-        <h4 class="card_race">${race}</h4>
+        <img class="card_img" src=${patata.image} alt="siames-cat" />
+        <h3 class="card_title">${patata.name.toUpperCase()}</h3>
+        <h4 class="card_race">${patata.race}</h4>
         <p class="card_description">
-        ${desc}
+        ${patata.desc}
         </p>
     </article>
 </li>`;
-    return kittenCard;
 }
+
+
+
 // Esto sería otra manera de poner la card de los gatitos
 // renderKitten(kittenImg1, kittenName1, kittenRace1, kittenDesc1);
 // const kittenOne = renderKitten(kittenImg1, kittenName1, kittenRace1, kittenDesc1);
-catList.innerHTML = renderKitten(kittenData_1.image, kittenData_1.name, kittenData_1.race, kittenData_1.desc);
+catList.innerHTML = renderKitten(kittenDataList[0]) + renderKitten(kittenDataList[1])+ renderKitten(kittenDataList[2]);
 
 
 
@@ -121,7 +122,7 @@ const catSection = document.querySelector(".js-list");
 });*/
 
 
-
+//Revisar!
 const filterKitten = (event) => {
     const inputDescription = description.value;
     event.preventDefault();
